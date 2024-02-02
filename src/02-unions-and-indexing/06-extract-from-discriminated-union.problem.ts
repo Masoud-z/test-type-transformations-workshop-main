@@ -1,3 +1,4 @@
+import { Includes } from "ts-toolbelt/out/Object/Includes";
 import { Equal, Expect } from "../helpers/type-utils";
 
 export type Event =
@@ -14,6 +15,6 @@ export type Event =
       event: KeyboardEvent;
     };
 
-type ClickEvent = unknown;
+type ClickEvent = Extract<Event, { type: "click" }>;
 
 type tests = [Expect<Equal<ClickEvent, { type: "click"; event: MouseEvent }>>];
